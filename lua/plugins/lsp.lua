@@ -13,6 +13,7 @@ return {
 
 			local mason = require("mason")
 			local lspconfig = require("lspconfig")
+			local masonlspcfg = require("mason-lspconfig")
 			local blink_cmp = require("blink.cmp")
 			local lsps = sennvim.lsp.get_server_names()
 			local formatters = sennvim.formatters.get_formatter_names()
@@ -31,6 +32,10 @@ return {
 				ui = {
 					border = "rounded",
 				},
+			})
+
+			masonlspcfg.setup({
+				ensure_installed = lsps,
 			})
 
 			sennvim.utilities.mason_ensure_installed(ensure_installed)
